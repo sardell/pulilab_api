@@ -22,5 +22,11 @@ module PulilabApi
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.action_dispatch.default_headers = {
+        # to be removed once CORS 
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Request-Method' => %w{POST GET PUT DELETE OPTIONS}.join(",")
+    }
   end
 end
